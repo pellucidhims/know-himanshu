@@ -12,10 +12,10 @@ import PropTypes from 'prop-types';
 
 const CustomizedTimeline = (props) => {
   const classes = useStyles();
-  const { list: timeline, align = 'left' } = props;
+  const { list, align = 'left' } = props;
   return (
     <Timeline align={align}>
-      {timeline.map((item) => {
+      {list.map((item) => {
         return (
           <TimelineItem style={{ marginBottom: '2%' }}>
             <Slide

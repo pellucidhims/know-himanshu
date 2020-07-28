@@ -8,7 +8,6 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 
 import PropTypes from 'prop-types';
-import CustomizedTimeline from '../CustomizedTimeline/customizedTimeline';
 
 /**
  * The example data is structured as follows:
@@ -142,4 +141,4 @@ CustomGridList.defaultProps = {
   tileData: [],
 };
 
-export default CustomizedTimeline;
+export default CustomGridList;
