@@ -3,6 +3,7 @@ body {
   font-family: 'Grenze Gotisch', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  user-select: none;
 }
 body::-webkit-scrollbar {
   width: 5px;

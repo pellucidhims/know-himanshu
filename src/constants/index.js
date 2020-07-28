@@ -25,9 +25,9 @@ export const LINKS = [
     to: 'experience',
   },
   {
-    id: 'work',
-    label: 'Work',
-    to: 'work',
+    id: 'project',
+    label: 'Project',
+    to: 'project',
   },
   {
     id: 'blog',
