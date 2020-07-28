@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f548b8436b0b5d3629b2c681b52a117a",
+    "revision": "5b2e677c260b5e19ce1b5ddcad95d381",
     "url": "/know-himanshu/index.html"
   },
   {
-    "revision": "4a7a6c86cdb1fd565952",
+    "revision": "f27d87c6d1542dd6a0f1",
     "url": "/know-himanshu/static/css/main.2f0d6e39.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/know-himanshu/static/js/2.c6507f45.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4a7a6c86cdb1fd565952",
-    "url": "/know-himanshu/static/js/main.df350853.chunk.js"
+    "revision": "f27d87c6d1542dd6a0f1",
+    "url": "/know-himanshu/static/js/main.27353ca9.chunk.js"
   },
   {
     "revision": "d9e7d7eeca0fe625cbdf",
