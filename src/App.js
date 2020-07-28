@@ -277,7 +277,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
   boxWrapperSpclPadding: {
-    paddingTop: '5%',
+    paddingTop: '8%',
   },
   verticalBoxWrapper: {
     height: '100%',
