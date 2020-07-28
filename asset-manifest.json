@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/know-himanshu/static/css/main.2f0d6e39.chunk.css",
+    "main.js": "/know-himanshu/static/js/main.df350853.chunk.js",
+    "main.js.map": "/know-himanshu/static/js/main.df350853.chunk.js.map",
+    "runtime-main.js": "/know-himanshu/static/js/runtime-main.67fd0738.js",
+    "runtime-main.js.map": "/know-himanshu/static/js/runtime-main.67fd0738.js.map",
+    "static/js/2.c6507f45.chunk.js": "/know-himanshu/static/js/2.c6507f45.chunk.js",
+    "static/js/2.c6507f45.chunk.js.map": "/know-himanshu/static/js/2.c6507f45.chunk.js.map",
+    "index.html": "/know-himanshu/index.html",
+    "precache-manifest.182680b5095918a65758a0b9716db13d.js": "/know-himanshu/precache-manifest.182680b5095918a65758a0b9716db13d.js",
+    "service-worker.js": "/know-himanshu/service-worker.js",
+    "static/css/main.2f0d6e39.chunk.css.map": "/know-himanshu/static/css/main.2f0d6e39.chunk.css.map",
+    "static/js/2.c6507f45.chunk.js.LICENSE.txt": "/know-himanshu/static/js/2.c6507f45.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.67fd0738.js",
+    "static/js/2.c6507f45.chunk.js",
+    "static/css/main.2f0d6e39.chunk.css",
+    "static/js/main.df350853.chunk.js"
+  ]
+}
