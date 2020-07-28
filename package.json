@@ -1,4 +1,5 @@
 {
+  "homepage": "http://pellucidhims.github.io/know-himanshu",
   "name": "know-himanshu",
   "version": "0.1.0",
   "private": true,
@@ -25,7 +26,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -63,6 +66,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.8",
+    "gh-pages": "^3.1.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5"
