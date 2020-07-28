@@ -47,6 +47,7 @@ const NavBar = () => {
                 onClick={scrollToTop}
                 onKeyDown={scrollToTop}
                 tabIndex={0}
+                className={classes.navToolbarRoot}
               >
                 <Typography
                   variant="h6"
@@ -96,6 +97,9 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     userSelect: 'none',
     cursor: 'pointer',
+  },
+  navToolbarRoot: {
+    outline: 'none',
   },
   navBarLeftTitleStyle: {
     '&:hover': {

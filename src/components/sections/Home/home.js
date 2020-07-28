@@ -19,8 +19,11 @@ const CURSOR_BLINK_DELAY = 250;
 
 const INTRO_TEXT = [
   "I'm Himanshu",
-  "I'm a Fullstack developer",
-  'I like sketching in my free time',
+  'Firstly, thank you for heading over here',
+  "I'm a Fullstack developer by profession",
+  'Since you have already made till here..',
+  'Do take some time to explore my profile',
+  'I would love to hear from you :)',
 ];
 
 const Home = () => {
@@ -104,7 +107,7 @@ const Home = () => {
           mountOnEnter
           unmountOnExit
         >
-          <Paper elevation={2}>
+          <Paper elevation={2} className={classes.paper}>
             <div
               className={classnames(classes.placeholderImageRoot, {
                 [classes.verticalPlaceholderImageRoot]: !matches,
@@ -116,7 +119,7 @@ const Home = () => {
                     variant="h2"
                     style={{ fontWeight: 'bold', marginBottom: '1em' }}
                   >
-                    <span className={classes.placeholderHeaderStyle}>Hi!</span>
+                    <span className={classes.placeholderHeaderStyle}>Hey,</span>
                     <br />
                     <span style={{ color: colorArr[phColorIdx.current].A700 }}>
                       {placeholderText}
@@ -124,19 +127,27 @@ const Home = () => {
                     </span>
                   </Typography>
                 </div>
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  endIcon={<CloudDownload style={{ fontSize: 30 }} />}
-                  className={classes.downloadCvBtnStyle}
+                <a
+                  href={`${process.env.PUBLIC_URL}/HimanshuResume-Jul2020.pdf`}
+                  style={{ textDecoration: 'none' }}
+                  download={`Himanshu Resume - ${new Date()}`}
                 >
-                  Download CV
-                </Button>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    endIcon={<CloudDownload style={{ fontSize: 30 }} />}
+                    className={classes.downloadCvBtnStyle}
+                  >
+                    Download CV
+                  </Button>
+                </a>
               </div>
               <div>
                 <img
                   src={`${process.env.PUBLIC_URL}/displayProfilePicture.jpg`}
-                  className={classes.img}
+                  className={classnames(classes.img, {
+                    [classes.verticalImg]: !matches,
+                  })}
                   alt="profile"
                 />
               </div>
@@ -157,6 +168,9 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     width: '100%',
   },
+  paper: {
+    borderRadius: '30px',
+  },
   placeholderImageRoot: {
     display: 'flex',
     justifyContent: 'space-around',
@@ -168,9 +182,12 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     width: window.innerWidth / 3,
-    height: window.innerHeight - 120,
+    height: window.innerHeight - 150,
     borderRadius: '30px',
     objectFit: 'cover',
+  },
+  verticalImg: {
+    width: window.innerWidth - 50,
   },
   placeholderHeaderStyle: {
     color: theme.palette.secondary.main,
