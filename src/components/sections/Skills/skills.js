@@ -3,6 +3,8 @@ import { makeStyles, Box, Typography } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import PropTypes from 'prop-types';
 
+import VisiblityWrapper from '../../VisiblityWrapper/visiblityWrapper';
+
 const skillSet = [
   {
     label: 'JavaScript',
@@ -101,30 +103,32 @@ DisplayRating.propTypes = {
 const Skills = () => {
   const classes = useStyles();
   return (
-    <div>
-      <div className={classes.root}>
-        {skillSet.map((skill) => {
-          return <DisplayRating label={skill.label} value={skill.value} />;
-        })}
+    <VisiblityWrapper>
+      <div>
+        <div className={classes.root}>
+          {skillSet.map((skill) => {
+            return <DisplayRating label={skill.label} value={skill.value} />;
+          })}
+        </div>
+        <Typography variant="h4" className={classes.sketchRoot}>
+          Art work at glance
+        </Typography>
+        <div className={classes.root}>
+          {sketchList.map((sketch) => {
+            return (
+              <div>
+                <img
+                  key={sketch.label}
+                  src={`${process.env.PUBLIC_URL}/${sketch.file}.jpg`}
+                  className={classes.sketch}
+                  alt={sketch.label}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <Typography variant="h4" className={classes.sketchRoot}>
-        Art work at glance
-      </Typography>
-      <div className={classes.root}>
-        {sketchList.map((sketch) => {
-          return (
-            <div>
-              <img
-                key={sketch.label}
-                src={`${process.env.PUBLIC_URL}/${sketch.file}.jpg`}
-                className={classes.sketch}
-                alt={sketch.label}
-              />
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    </VisiblityWrapper>
   );
 };
 

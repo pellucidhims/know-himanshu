@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import GridList from '../../GridList/gridList';
 
+import VisiblityWrapper from '../../VisiblityWrapper/visiblityWrapper';
+
 const projectList = [
   {
     img: `${process.env.PUBLIC_URL}/aboutIcon.png`,
@@ -38,9 +40,11 @@ const projectList = [
 const Project = () => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <GridList tileData={projectList} listHeader="Recent Projects" />
-    </div>
+    <VisiblityWrapper>
+      <div className={classes.root}>
+        <GridList tileData={projectList} listHeader="Recent Projects" />
+      </div>
+    </VisiblityWrapper>
   );
 };
 

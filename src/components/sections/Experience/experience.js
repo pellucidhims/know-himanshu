@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import CustomizedTimeline from '../../CustomizedTimeline/customizedTimeline';
 
+import VisiblityWrapper from '../../VisiblityWrapper/visiblityWrapper';
+
 import { reverseArr } from '../../../utils';
 
 const experienceList = [
@@ -53,9 +55,14 @@ const experienceList = [
 const Experience = () => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <CustomizedTimeline list={reverseArr(experienceList)} align="alternate" />
-    </div>
+    <VisiblityWrapper>
+      <div className={classes.root}>
+        <CustomizedTimeline
+          list={reverseArr(experienceList)}
+          align="alternate"
+        />
+      </div>
+    </VisiblityWrapper>
   );
 };
 

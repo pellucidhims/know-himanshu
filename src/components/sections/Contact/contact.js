@@ -19,6 +19,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 
 import PropTypes from 'prop-types';
+import VisiblityWrapper from '../../VisiblityWrapper/visiblityWrapper';
 
 const personalContactInfo = [
   {
@@ -124,116 +125,127 @@ const Contact = () => {
   const classes = useStyles();
   const matches = useMediaQuery('(min-width:900px)');
   return (
-    <div className={classes.root}>
-      <div className={classes.wrapper}>
-        <Slide
-          direction="right"
-          in
-          timeout={{ enter: 1000 }}
-          mountOnEnter
-          unmountOnExit
-        >
-          <Paper elevation={2} style={{ padding: '1%' }}>
-            <Typography variant="h5" className={classes.socialConnectionHeader}>
-              Connect with me socially
-            </Typography>
-            <div className={classes.socialConnectionContainer}>
-              {socialConnectionList.map((social) => {
-                return (
-                  <SocialLink
-                    label={social.label}
-                    link={social.link}
-                    icon={social.icon}
-                    key={social.label}
-                  />
-                );
-              })}
-            </div>
-          </Paper>
-        </Slide>
-      </div>
-      <div className={classnames(classes.wrapper, classes.separator)}>
-        <span
-          style={{ fontSize: '20px', margin: '0px 10px', fontWeight: 'bold' }}
-        >
-          OR
-        </span>
-      </div>
-      <div className={classes.wrapper}>
-        <Slide
-          direction="up"
-          in
-          timeout={{ enter: 1000 }}
-          mountOnEnter
-          unmountOnExit
-        >
-          <Paper elevation={2} style={{ padding: '1%' }}>
-            <Typography variant="h5" className={classes.socialConnectionHeader}>
-              Drop me an email
-            </Typography>
-            <div
-              className={classnames(classes.paper, {
-                [classes.verticalPaper]: !matches,
-              })}
-            >
-              <div className={classes.personalContactInfoRoot}>
-                {personalContactInfo.map((info) => {
+    <VisiblityWrapper>
+      <div className={classes.root}>
+        <div className={classes.wrapper}>
+          <Slide
+            direction="right"
+            in
+            timeout={{ enter: 1000 }}
+            mountOnEnter
+            unmountOnExit
+          >
+            <Paper elevation={2} style={{ padding: '1%' }}>
+              <Typography
+                variant="h5"
+                className={classes.socialConnectionHeader}
+              >
+                Connect with me socially
+              </Typography>
+              <div className={classes.socialConnectionContainer}>
+                {socialConnectionList.map((social) => {
                   return (
-                    <div className={classes.personalContactInnerDiv}>
-                      <div className={classes.personalContactIcon}>
-                        <Icon fontSize="large">{info.icon}</Icon>
-                      </div>
-                      <div className={classes.personalContactText}>
-                        {info.href ? (
-                          <a href={info.href} className={classes.linkTextStyle}>
-                            <Typography variant="subtitle1">
-                              {info.text}
-                            </Typography>
-                          </a>
-                        ) : (
-                          <Typography variant="subtitle1">
-                            {info.text}
-                          </Typography>
-                        )}
-                      </div>
-                    </div>
+                    <SocialLink
+                      label={social.label}
+                      link={social.link}
+                      icon={social.icon}
+                      key={social.label}
+                    />
                   );
                 })}
               </div>
-              <div className={classes.contactFormInnerDiv}>
-                <form
-                  className={classes.formRoot}
-                  noValidate
-                  autoComplete="off"
-                >
-                  {contactFormFields.map((field) => {
+            </Paper>
+          </Slide>
+        </div>
+        <div className={classnames(classes.wrapper, classes.separator)}>
+          <span
+            style={{ fontSize: '20px', margin: '0px 10px', fontWeight: 'bold' }}
+          >
+            OR
+          </span>
+        </div>
+        <div className={classes.wrapper}>
+          <Slide
+            direction="up"
+            in
+            timeout={{ enter: 1000 }}
+            mountOnEnter
+            unmountOnExit
+          >
+            <Paper elevation={2} style={{ padding: '1%' }}>
+              <Typography
+                variant="h5"
+                className={classes.socialConnectionHeader}
+              >
+                Drop me an email
+              </Typography>
+              <div
+                className={classnames(classes.paper, {
+                  [classes.verticalPaper]: !matches,
+                })}
+              >
+                <div className={classes.personalContactInfoRoot}>
+                  {personalContactInfo.map((info) => {
                     return (
-                      <TextField
-                        key={field.id}
-                        id={`${field.id}-outline`}
-                        label={field.label}
-                        variant="outlined"
-                        multiline={!!field.multiline}
-                        rows={field.rows || 1}
-                        required={!!field.required}
-                        style={{ minWidth: '250px' }}
-                      />
+                      <div className={classes.personalContactInnerDiv}>
+                        <div className={classes.personalContactIcon}>
+                          <Icon fontSize="large">{info.icon}</Icon>
+                        </div>
+                        <div className={classes.personalContactText}>
+                          {info.href ? (
+                            <a
+                              href={info.href}
+                              className={classes.linkTextStyle}
+                            >
+                              <Typography variant="subtitle1">
+                                {info.text}
+                              </Typography>
+                            </a>
+                          ) : (
+                            <Typography variant="subtitle1">
+                              {info.text}
+                            </Typography>
+                          )}
+                        </div>
+                      </div>
                     );
                   })}
-                </form>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.formSubmitBtn}
-                >
-                  Submit
-                </Button>
+                </div>
+                <div className={classes.contactFormInnerDiv}>
+                  <form
+                    className={classes.formRoot}
+                    noValidate
+                    autoComplete="off"
+                  >
+                    {contactFormFields.map((field) => {
+                      return (
+                        <TextField
+                          key={field.id}
+                          id={`${field.id}-outline`}
+                          label={field.label}
+                          variant="outlined"
+                          multiline={!!field.multiline}
+                          rows={field.rows || 1}
+                          required={!!field.required}
+                          style={{ minWidth: '250px' }}
+                        />
+                      );
+                    })}
+                  </form>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.formSubmitBtn}
+                  >
+                    Submit
+                  </Button>
+                </div>
               </div>
-            </div>
-          </Paper>
-        </Slide>
+            </Paper>
+          </Slide>
+        </div>
       </div>
-    </div>
+    </VisiblityWrapper>
   );
 };
 

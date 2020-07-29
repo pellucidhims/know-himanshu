@@ -7,36 +7,40 @@ import {
 } from '@material-ui/core';
 import classnames from 'classnames';
 
+import VisiblityWrapper from '../../VisiblityWrapper/visiblityWrapper';
+
 const Blog = () => {
   const classes = useStyles();
   const matches = useMediaQuery('(min-width:900px)');
   return (
-    <div className={classes.root}>
-      <div className={classes.innerRoot}>
-        <div>
-          <Typography variant="h3">Work in progress...</Typography>
-          <Typography variant="h5">
-            Watchout this space for some awesome content!
-          </Typography>
-        </div>
-        <div>
-          <Tooltip
-            title="Yep! that's me coding..."
-            placement="top-start"
-            arrow
-            classes={classes.tooltip}
-          >
-            <img
-              src={`${process.env.PUBLIC_URL}/workInProgressIcon.png`}
-              className={classnames(classes.wipIcon, {
-                [classes.verticalWipIcon]: !matches,
-              })}
-              alt="blog"
-            />
-          </Tooltip>
+    <VisiblityWrapper>
+      <div className={classes.root}>
+        <div className={classes.innerRoot}>
+          <div>
+            <Typography variant="h3">Work in progress...</Typography>
+            <Typography variant="h5">
+              Watchout this space for some awesome content!
+            </Typography>
+          </div>
+          <div>
+            <Tooltip
+              title="Yep! that's me coding..."
+              placement="top-start"
+              arrow
+              classes={classes.tooltip}
+            >
+              <img
+                src={`${process.env.PUBLIC_URL}/workInProgressIcon.png`}
+                className={classnames(classes.wipIcon, {
+                  [classes.verticalWipIcon]: !matches,
+                })}
+                alt="blog"
+              />
+            </Tooltip>
+          </div>
         </div>
       </div>
-    </div>
+    </VisiblityWrapper>
   );
 };
 
