@@ -27,9 +27,13 @@ function Copyright() {
       variant="body1"
       color="black"
       align="center"
-      style={{ marginBottom: '10px' }}
+      style={{ margin: '2% 1%' }}
     >
-      {'Made with ❤️ and passion | Copyright © '}
+      Made with{' '}
+      <span role="img" aria-label="heart">
+        ❤️
+      </span>{' '}
+      and passion <br /> {' Copyright © '}
       <Link color="inherit" href="http://www.knowhimanshu.in/">
         Himanshu
       </Link>{' '}

@@ -216,6 +216,7 @@ const Contact = () => {
                         multiline={!!field.multiline}
                         rows={field.rows || 1}
                         required={!!field.required}
+                        style={{ minWidth: '250px' }}
                       />
                     );
                   })}
@@ -301,6 +302,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexGrow: 1,
     width: '50%',
+    minWidth: '300px',
     padding: '10px',
   },
   contactFormInnerDiv: {
