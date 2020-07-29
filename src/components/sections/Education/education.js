@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import CustomizedTimeline from '../../CustomizedTimeline/customizedTimeline';
 
+import VisiblityWrapper from '../../VisiblityWrapper/visiblityWrapper';
+
 import { reverseArr } from '../../../utils';
 
 const educationList = [
@@ -33,16 +35,18 @@ const Education = () => {
   const classes = useStyles();
   const [list] = useState(reverseArr(educationList));
   return (
-    <div className={classes.root}>
-      <CustomizedTimeline list={list} align="alternate" />
-      <div>
-        <img
-          src={`${process.env.PUBLIC_URL}/educationIcon.png`}
-          className={classes.eductionIcon}
-          alt="education"
-        />
+    <VisiblityWrapper>
+      <div className={classes.root}>
+        <CustomizedTimeline list={list} align="alternate" />
+        <div>
+          <img
+            src={`${process.env.PUBLIC_URL}/educationIcon.png`}
+            className={classes.eductionIcon}
+            alt="education"
+          />
+        </div>
       </div>
-    </div>
+    </VisiblityWrapper>
   );
 };
 

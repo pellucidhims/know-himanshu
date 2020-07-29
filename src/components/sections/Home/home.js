@@ -127,22 +127,8 @@ const Home = () => {
                     </span>
                   </Typography>
                 </div>
-                <a
-                  href={`${process.env.PUBLIC_URL}/HimanshuResume-Jul2020.pdf`}
-                  style={{ textDecoration: 'none' }}
-                  download={`Himanshu Resume - ${new Date()}`}
-                >
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    endIcon={<CloudDownload style={{ fontSize: 30 }} />}
-                    className={classes.downloadCvBtnStyle}
-                  >
-                    Download CV
-                  </Button>
-                </a>
               </div>
-              <div>
+              <div style={{ position: 'relative' }}>
                 <img
                   src={`${process.env.PUBLIC_URL}/displayProfilePicture.jpg`}
                   className={classnames(classes.img, {
@@ -150,6 +136,24 @@ const Home = () => {
                   })}
                   alt="profile"
                 />
+                <div
+                  style={{ position: 'absolute', bottom: '5%', right: '25%' }}
+                >
+                  <a
+                    href={`${process.env.PUBLIC_URL}/HimanshuResume-Jul2020.pdf`}
+                    style={{ textDecoration: 'none' }}
+                    download={`Himanshu Resume - ${new Date()}`}
+                  >
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      endIcon={<CloudDownload style={{ fontSize: 30 }} />}
+                      className={classes.downloadCvBtnStyle}
+                    >
+                      Download CV
+                    </Button>
+                  </a>
+                </div>
               </div>
             </div>
           </Paper>
