@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles, Box, Typography } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import VisiblityWrapper from '../../VisiblityWrapper/visiblityWrapper';
@@ -113,7 +114,7 @@ const Skills = () => {
         <Typography variant="h4" className={classes.sketchRoot}>
           Art work at glance
         </Typography>
-        <div className={classes.root}>
+        <div className={classnames(classes.root, classes.sketchListContainer)}>
           {sketchList.map((sketch) => {
             return (
               <div>
@@ -150,7 +151,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '5%',
     '&:hover': {
       backgroundColor: theme.palette.secondary.light,
-      color: theme.palette.primary.contrastText,
+      color: theme.palette.secondary.accentColor,
     },
     '&:hover $displayRatingLabel': {
       letterSpacing: '4px',
@@ -171,13 +172,27 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     transition: 'transform 0.25s linear',
   },
+  sketchListContainer: {
+    maxWidth: window.innerWidth - 10,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflowX: 'scroll',
+    overflowY: 'hidden',
+    '&::-webkit-scrollbar': {
+      height: '4px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: theme.palette.primary.main,
+    },
+  },
   sketchRoot: {
     margin: '2% 0px',
     color: theme.palette.secondary.main,
   },
   sketch: {
-    width: '300px',
-    height: '300px',
+    width: '250px',
+    height: '250px',
     margin: '10px',
     borderRadius: '50%',
     transition: 'transform 0.25s linear',

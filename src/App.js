@@ -25,7 +25,7 @@ function Copyright() {
   return (
     <Typography
       variant="body1"
-      color="black"
+      color="textPrimary"
       align="center"
       style={{ margin: '2% 1%' }}
     >
@@ -127,7 +127,7 @@ const App = () => {
                 key={section.id}
                 className={classnames(
                   classes.boxWrapper,
-                  classes.boxWrapperBgDefault,
+                  classes.boxWrapperBgPrimary,
                   { [classes.verticalBoxWrapper]: !matches }
                 )}
               >

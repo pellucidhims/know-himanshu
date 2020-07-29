@@ -68,10 +68,11 @@ const Experience = () => {
 
 const useStyles = makeStyles(() => ({
   root: {
-    // width: '100%',
+    width: '100%',
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
+    maxWidth: window.innerWidth - 50,
   },
   eductionIcon: {
     width: '100%',

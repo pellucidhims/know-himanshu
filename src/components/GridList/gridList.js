@@ -57,7 +57,7 @@ const CustomGridList = (props) => {
           <GridListTile
             key={tile.img}
             cols={1}
-            rows={2}
+            rows={1}
             className={classes.listTileRoot}
           >
             <div style={{ overflow: 'hidden' }}>

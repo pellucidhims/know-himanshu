@@ -1,5 +1,5 @@
 import React from 'react';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+// import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,16 +11,18 @@ import { Link, animateScroll as scroll } from 'react-scroll';
 import { LINKS } from '../../constants';
 
 function HideOnScroll(props) {
+  const classes = useStyles();
   const { children } = props;
 
-  const trigger = useScrollTrigger(undefined);
+  // const trigger = useScrollTrigger(undefined);
 
   return (
     <Slide
       appear={false}
       direction="down"
-      in={!trigger}
-      style={{ boxShadow: '0px 0px 40px 1px purple' }}
+      // in={!trigger} // Uncomment this line if you want to hide nav bar when scrolling
+      in
+      className={classes.hideScroll}
     >
       {children}
     </Slide>
@@ -124,7 +126,12 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.secondary.main,
     },
   },
+  hideScroll: {
+    boxShadow: `0px 0px 40px 1px ${theme.palette.primary.dark}`,
+  },
   linkActive: {
+    fontWeight: 'bold',
+    color: theme.palette.secondary.main,
     // background: 'orange',
     // borderRadius: '5px',
     // color: theme.palette.primary.main,

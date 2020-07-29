@@ -27,12 +27,8 @@ const CustomizedTimeline = (props) => {
             >
               <TimelineOppositeContent>
                 <div>
-                  <Typography variant="h5" color="textSecondary">
-                    {item.institute}
-                  </Typography>
-                  <Typography variant="h6" color="textSecondary">
-                    {item.duration}
-                  </Typography>
+                  <Typography variant="h5">{item.institute}</Typography>
+                  <Typography variant="h6">{item.duration}</Typography>
                 </div>
               </TimelineOppositeContent>
             </Slide>

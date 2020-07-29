@@ -71,33 +71,37 @@ const socialConnectionList = [
     id: 'github',
     icon: <GitHubIcon fontSize="large" />,
     link: 'https://github.com/pellucidhims',
-    label: 'View my project repository',
+    label: '@pellucidhims',
+    title: 'View Project Repository',
   },
   {
     id: 'instagram',
     icon: <InstagramIcon fontSize="large" />,
     link: 'https://www.instagram.com/pellucidhimanshu/',
-    label: 'Head towards my instagram',
+    label: '@pellucidhimanshu',
+    title: 'Instantly connect on instagram',
   },
   {
     id: 'linkedin',
     icon: <LinkedInIcon fontSize="large" />,
     link: 'https://in.linkedin.com/in/pellucidhimanshu',
-    label: 'Lets connect over LinkedIn',
+    label: '@pellucidhimanshu',
+    title: 'View LinkedIn Profile',
   },
   {
     id: 'twitter',
     icon: <TwitterIcon fontSize="large" />,
     link: 'https://twitter.com/pelucidhimanshu',
-    label: 'Tweet to me @pelucidhimanshu',
+    label: '@pelucidhimanshu',
+    title: 'Tweet to me',
   },
 ];
 
 const SocialLink = (props) => {
   const classes = useStyles();
-  const { label, link, icon } = props;
+  const { label, link, icon, title } = props;
   return (
-    <Tooltip title={label} arrow placement="top" classes={classes.tooltip}>
+    <Tooltip title={title} arrow placement="top" classes={classes.tooltip}>
       <Link
         href={link}
         target="__blank"
@@ -105,7 +109,7 @@ const SocialLink = (props) => {
         className={classes.socialLinkItemRoot}
       >
         {icon}
-        <span style={{ fontSize: '16px', marginLeft: '10px' }}>{link}</span>
+        <span style={{ fontSize: '16px', marginLeft: '10px' }}>{label}</span>
       </Link>
     </Tooltip>
   );
@@ -115,10 +119,12 @@ SocialLink.propTypes = {
   label: PropTypes.string,
   link: PropTypes.string.isRequired,
   icon: PropTypes.node.isRequired,
+  title: PropTypes.string,
 };
 
 SocialLink.defaultProps = {
   label: '',
+  title: '',
 };
 
 const Contact = () => {
@@ -149,6 +155,7 @@ const Contact = () => {
                       label={social.label}
                       link={social.link}
                       icon={social.icon}
+                      title={social.title}
                       key={social.label}
                     />
                   );
@@ -189,7 +196,12 @@ const Contact = () => {
                     return (
                       <div className={classes.personalContactInnerDiv}>
                         <div className={classes.personalContactIcon}>
-                          <Icon fontSize="large">{info.icon}</Icon>
+                          <Icon
+                            fontSize="large"
+                            className={classes.personalContactIconInner}
+                          >
+                            {info.icon}
+                          </Icon>
                         </div>
                         <div className={classes.personalContactText}>
                           {info.href ? (
@@ -269,14 +281,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    flexWrap: 'wrap',
   },
   verticalPaper: {
-    flexDirection: 'column',
+    flexDirection: 'column-reverse',
   },
   socialConnectionHeader: {
     marginBottom: '10px',
-    color: theme.palette.secondary.main,
+    color: theme.palette.secondary.dark,
   },
   socialConnectionContainer: {
     display: 'flex',
@@ -329,7 +340,15 @@ const useStyles = makeStyles((theme) => ({
     padding: '20px',
     background: theme.palette.primary.light,
     color: theme.palette.primary.contrastText,
-    borderRadius: '30px',
+    borderRadius: '20px',
+    transition: 'transform 0.25s linear',
+    '&:hover $personalContactIconInner': {
+      transform: 'scale(1.4)',
+    },
+  },
+  personalContactIconInner: {
+    transition: 'transform 0.25s linear',
+    transform: 'scale(1)',
   },
   personalContactText: {
     width: '250px',

@@ -7,11 +7,12 @@ body {
 }
 body::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
   border-radius: 10px;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #d500f9;
+  background: #009688; 
   border-radius: 50px;
 }
 

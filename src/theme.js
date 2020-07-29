@@ -1,20 +1,21 @@
-import { red, purple, orange } from '@material-ui/core/colors';
+import { red } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 // A custom theme for this app
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: purple.A100,
-      main: purple.A400,
-      dark: purple.A700,
+      light: '#00796B', // purple.A100,
+      main: '#009688', // purple.A400,
+      dark: '#00796B', // purple.A700,
       contrastText: '#fff',
     },
     secondary: {
-      light: orange.A100,
-      main: orange.A400,
-      dark: orange.A700,
+      light: '#FFECB3', // orange.A100,
+      main: '#FFC107', // orange.A400,
+      dark: '#FFA000', // orange.A700,
       contrastText: '#fff',
+      accentColor: '#607D8B',
     },
     error: {
       main: red.A400,

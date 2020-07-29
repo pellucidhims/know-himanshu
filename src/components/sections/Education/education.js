@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, useMediaQuery } from '@material-ui/core';
+import classnames from 'classnames';
 import CustomizedTimeline from '../../CustomizedTimeline/customizedTimeline';
 
 import VisiblityWrapper from '../../VisiblityWrapper/visiblityWrapper';
 
 import { reverseArr } from '../../../utils';
+import theme from '../../../theme';
 
 const educationList = [
   {
@@ -16,7 +18,7 @@ const educationList = [
     description:
       'I graduated high school, where I enjoyed studying science, along with mathematics and biology. Initially, had an inclination towards biology and was pretty good at it. But then turned my gaze towards computers and got fascinated with internet and websites allowing us to do some amazing things.',
     icon: 'book',
-    iconColor: 'primary',
+    iconColor: 'textSecondary',
   },
   {
     id: '2012',
@@ -34,9 +36,14 @@ const educationList = [
 const Education = () => {
   const classes = useStyles();
   const [list] = useState(reverseArr(educationList));
+  const matches = useMediaQuery('(min-width:900px)');
   return (
     <VisiblityWrapper>
-      <div className={classes.root}>
+      <div
+        className={classnames(classes.root, {
+          [classes.rootVertical]: !matches,
+        })}
+      >
         <CustomizedTimeline list={list} align="alternate" />
         <div>
           <img
@@ -52,14 +59,23 @@ const Education = () => {
 
 const useStyles = makeStyles(() => ({
   root: {
-    // width: '100%',
+    width: '100%',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  rootVertical: {
+    flexWrap: 'wrap-reverse',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   eductionIcon: {
-    width: '100%',
-    height: '100%',
+    width: '200px',
+    height: '200px',
+    borderRadius: '20px',
+  },
+  oppositeContentContainer: {
+    color: theme.palette.primary.contrastText,
   },
 }));
 

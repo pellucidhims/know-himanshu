@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { orange, green, purple, blue } from '@material-ui/core/colors';
 import {
   makeStyles,
   Slide,
@@ -11,7 +10,14 @@ import {
 import CloudDownload from '@material-ui/icons/CloudDownload';
 import classnames from 'classnames';
 
-const colorArr = [orange, green, purple, blue];
+const colorArr = [
+  '#7C4DFF',
+  '#009688',
+  '#673AB7',
+  '#CDDC39',
+  '#283593',
+  '#ffb300',
+];
 
 const CHAR_DURATION = 150; // in miliseconds
 const TEXT_DURATION = 1500;
@@ -121,7 +127,7 @@ const Home = () => {
                   >
                     <span className={classes.placeholderHeaderStyle}>Hey,</span>
                     <br />
-                    <span style={{ color: colorArr[phColorIdx.current].A700 }}>
+                    <span style={{ color: colorArr[phColorIdx.current] }}>
                       {placeholderText}
                       <span ref={phCursorRef}>|</span>
                     </span>

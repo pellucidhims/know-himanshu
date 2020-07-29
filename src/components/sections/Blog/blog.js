@@ -27,7 +27,7 @@ const Blog = () => {
               title="Yep! that's me coding..."
               placement="top-start"
               arrow
-              classes={classes.tooltip}
+              className={classes.tooltip}
             >
               <img
                 src={`${process.env.PUBLIC_URL}/workInProgressIcon.png`}
@@ -64,7 +64,7 @@ const useStyles = makeStyles(() => ({
     width: window.innerWidth - 50,
   },
   tooltip: {
-    backgroundColor: 'black',
+    backgroundColor: 'primary',
   },
 }));
 
