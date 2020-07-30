@@ -108,7 +108,13 @@ const Skills = () => {
       <div>
         <div className={classes.root}>
           {skillSet.map((skill) => {
-            return <DisplayRating label={skill.label} value={skill.value} />;
+            return (
+              <DisplayRating
+                label={skill.label}
+                value={skill.value}
+                key={skill.label}
+              />
+            );
           })}
         </div>
         <Typography variant="h4" className={classes.sketchRoot}>
@@ -117,7 +123,7 @@ const Skills = () => {
         <div className={classnames(classes.root, classes.sketchListContainer)}>
           {sketchList.map((sketch) => {
             return (
-              <div>
+              <div key={sketch.label}>
                 <img
                   key={sketch.label}
                   src={`${process.env.PUBLIC_URL}/${sketch.file}.jpg`}

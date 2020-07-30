@@ -18,7 +18,7 @@ const educationList = [
     description:
       'I graduated high school, where I enjoyed studying science, along with mathematics and biology. Initially, had an inclination towards biology and was pretty good at it. But then turned my gaze towards computers and got fascinated with internet and websites allowing us to do some amazing things.',
     icon: 'book',
-    iconColor: 'textSecondary',
+    iconColor: 'primary',
   },
   {
     id: '2012',

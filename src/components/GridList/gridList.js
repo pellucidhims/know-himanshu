@@ -28,7 +28,7 @@ import PropTypes from 'prop-types';
  */
 const CustomGridList = (props) => {
   const classes = useStyles();
-  const { listHeader = '', tileData } = props;
+  const { listHeader = '', tileData, onTileClick } = props;
 
   return (
     <div className={classes.root}>
@@ -36,9 +36,8 @@ const CustomGridList = (props) => {
         <GridListTile
           key="Subheader"
           cols={2}
-          rows={2}
           style={{
-            height: 'auto',
+            height: 'fit-content',
             position: 'sticky',
             top: 0,
             zIndex: 999,
@@ -59,6 +58,7 @@ const CustomGridList = (props) => {
             cols={1}
             rows={1}
             className={classes.listTileRoot}
+            onClick={() => onTileClick(tile)}
           >
             <div style={{ overflow: 'hidden' }}>
               <img
@@ -69,7 +69,7 @@ const CustomGridList = (props) => {
             </div>
             <GridListTileBar
               title={tile.title}
-              subtitle={<span>by: {tile.author}</span>}
+              subtitle={<span>{tile.subtitle}</span>}
               actionIcon={
                 <IconButton
                   aria-label={`info about ${tile.title}`}
@@ -111,13 +111,8 @@ const useStyles = makeStyles((theme) => ({
     color: 'rgba(255, 255, 255, 0.54)',
   },
   listTileRoot: {
-    borderLeft: '0.1px solid gray',
-    borderBottom: '0.1px solid gray',
     '&:hover $listTileImage': {
       transform: 'scale(1.2,1.2)',
-    },
-    '&:hover $listTileBar': {
-      opacity: 1,
     },
   },
   listTileImage: {
@@ -126,19 +121,21 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
   listTileBar: {
-    opacity: 0,
     transition: 'opacity 0.2s linear',
+    cursor: 'pointer',
   },
 }));
 
 CustomGridList.propTypes = {
   listHeader: PropTypes.string,
   tileData: PropTypes.arrayOf(PropTypes.object),
+  onTileClick: PropTypes.func,
 };
 
 CustomGridList.defaultProps = {
   listHeader: '',
   tileData: [],
+  onTileClick: () => {},
 };
 
 export default CustomGridList;
