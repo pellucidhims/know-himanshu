@@ -121,6 +121,9 @@ const useStyles = makeStyles((theme) => ({
   },
   linkStyleRoot: {
     margin: '0px 10px 0px 10px',
+    '&:last-child': {
+      margin: '0px 0px 0px 10px',
+    },
     '&:hover': {
       fontWeight: 'bold',
       color: theme.palette.secondary.main,

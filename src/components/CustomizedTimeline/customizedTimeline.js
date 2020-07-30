@@ -17,7 +17,7 @@ const CustomizedTimeline = (props) => {
     <Timeline align={align}>
       {list.map((item) => {
         return (
-          <TimelineItem style={{ marginBottom: '2%' }}>
+          <TimelineItem style={{ marginBottom: '2%' }} key={item.duration}>
             <Slide
               direction="right"
               in

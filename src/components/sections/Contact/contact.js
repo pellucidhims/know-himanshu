@@ -101,7 +101,7 @@ const SocialLink = (props) => {
   const classes = useStyles();
   const { label, link, icon, title } = props;
   return (
-    <Tooltip title={title} arrow placement="top" classes={classes.tooltip}>
+    <Tooltip title={title} arrow placement="top" className={classes.tooltip}>
       <Link
         href={link}
         target="__blank"
@@ -156,7 +156,7 @@ const Contact = () => {
                       link={social.link}
                       icon={social.icon}
                       title={social.title}
-                      key={social.label}
+                      key={social.title}
                     />
                   );
                 })}
@@ -194,7 +194,10 @@ const Contact = () => {
                 <div className={classes.personalContactInfoRoot}>
                   {personalContactInfo.map((info) => {
                     return (
-                      <div className={classes.personalContactInnerDiv}>
+                      <div
+                        className={classes.personalContactInnerDiv}
+                        key={info.text}
+                      >
                         <div className={classes.personalContactIcon}>
                           <Icon
                             fontSize="large"
@@ -308,7 +311,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   tooltip: {
-    backgroundColor: theme.palette.primary.dark,
+    // backgroundColor: theme.palette.primary.dark,
     // color: theme.palette.primary.contrastText,
     // fontSize:'18px'
   },

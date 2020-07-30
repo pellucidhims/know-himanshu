@@ -41,7 +41,6 @@ const Home = () => {
   const phTimeOut = useRef(undefined);
   const phCursorRef = useRef(undefined);
 
-  const [changeSlide] = useState(1);
   const [placeholderText, setPlaceholderText] = useState('');
   const matches = useMediaQuery('(min-width:900px)');
 
@@ -59,7 +58,7 @@ const Home = () => {
       if (phTimeOut.current) clearTimeout(phTimeOut.current);
       clearInterval(phCursorInterval);
     };
-  }, []);
+  }, []); //eslint-disable-line
 
   const initPhInterval = () => {
     return setInterval(() => {
@@ -108,7 +107,7 @@ const Home = () => {
       <div className={classes.wrapper}>
         <Slide
           direction="down"
-          in={changeSlide}
+          in
           timeout={{ enter: 1000 }}
           mountOnEnter
           unmountOnExit
