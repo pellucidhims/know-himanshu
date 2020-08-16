@@ -7,6 +7,7 @@ import {
   useMediaQuery,
 } from '@material-ui/core';
 import classnames from 'classnames';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import NavBar from './components/NavBar/navBar';
 
@@ -18,6 +19,7 @@ import Education from './components/sections/Education/education';
 import Experience from './components/sections/Experience/experience';
 import Project from './components/sections/Project/project';
 import Blog from './components/sections/Blog/blog';
+import AdminPanel from './components/AdminPanel';
 
 import { LINKS } from './constants';
 
@@ -44,15 +46,9 @@ function Copyright() {
 
 const sections = LINKS;
 
-const App = () => {
+const MainPage = () => {
   const classes = useStyles();
   const matches = useMediaQuery('(min-width:900px)');
-
-  // const handleMouseMove = (e) => {
-  //   const cursor = document.querySelector('#customCursor')
-  //   cursor.style.left = `${e.pageX}px`
-  //   cursor.style.top = `${e.pageY}px`
-  // }
 
   return (
     <div className={classes.appRoot}>
@@ -271,6 +267,23 @@ const App = () => {
       })}
       <footer>{Copyright()}</footer>
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path="/adminPanel">
+            <AdminPanel />
+          </Route>
+          <Route path="/">
+            <MainPage />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 

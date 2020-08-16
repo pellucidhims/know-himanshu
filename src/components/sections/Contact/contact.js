@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import {
   Slide,
   Paper,
@@ -17,9 +17,13 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 import PropTypes from 'prop-types';
+
+import { api } from '../../../utils';
 import VisiblityWrapper from '../../VisiblityWrapper/visiblityWrapper';
+
+const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const personalContactInfo = [
   {
@@ -46,16 +50,25 @@ const contactFormFields = [
     id: 'name',
     label: 'Name',
     required: true,
+    type: 'string',
+    min: 3,
+    max: 30,
   },
   {
     id: 'email',
     label: 'Email',
     required: true,
+    type: 'email',
+    min: 5,
+    max: 100,
   },
   {
     id: 'subject',
     label: 'Subject',
     required: true,
+    type: 'string',
+    min: 5,
+    max: 250,
   },
   {
     id: 'message',
@@ -63,6 +76,8 @@ const contactFormFields = [
     required: false,
     multiline: true,
     rows: 4,
+    type: 'string',
+    max: 500,
   },
 ];
 
@@ -127,9 +142,120 @@ SocialLink.defaultProps = {
   title: '',
 };
 
+const initState = {
+  promptMessage: '',
+  loading: false,
+};
+
 const Contact = () => {
   const classes = useStyles();
   const matches = useMediaQuery('(min-width:900px)');
+  const [state, dispatch] = useReducer(contactReducer, initState);
+
+  const handleChange = (e, fieldName) => {
+    dispatch({
+      type: 'fieldUpdate',
+      fieldName,
+      value: e.target.value,
+    });
+    if (state.promptMessage)
+      dispatch({
+        type: 'fieldUpdate',
+        fieldName: 'promptMessage',
+        value: '',
+      });
+  };
+
+  const getPayload = (formFields) => {
+    const sanitizedPayload = {};
+    formFields.forEach((field) => {
+      sanitizedPayload[field.id] =
+        typeof state[field.id] === 'string'
+          ? state[field.id].trim()
+          : state[field.id] || '';
+      if (field.type === 'email') {
+        sanitizedPayload[field.id] =
+          sanitizedPayload[field.id].toLowerCase() || '';
+      }
+    });
+    return sanitizedPayload;
+  };
+
+  const handleFormSubmit = (formFields = []) => {
+    for (let i = 0; i < formFields.length; i += 1) {
+      if (formFields[i].required) {
+        const validRes = handleInputValidationOnBlur(formFields[i]);
+        if (!validRes) return;
+      }
+    }
+    const sanitizedPaylaod = getPayload(formFields);
+    dispatch({
+      type: 'fieldUpdate',
+      fieldName: 'loading',
+      value: true,
+    });
+    api
+      .post('/visitor/postMessage', sanitizedPaylaod)
+      .then((response) => {
+        dispatch({
+          type: 'reset',
+          fieldName: '',
+          value: '',
+        });
+        dispatch({
+          type: 'prompt',
+          fieldName: 'promptMessage',
+          value: response.data.message,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: 'fieldUpdate',
+          fieldName: 'loading',
+          value: false,
+        });
+        dispatch({
+          type: 'prompt',
+          fieldName: 'promptMessage',
+          value: `An error occured posting message. ${error.message}`,
+        });
+      });
+  };
+
+  const validateInput = (field) => {
+    let validationString;
+    const currVal = state[field.id] && state[field.id].trim();
+    if (field.required) {
+      if (!currVal || currVal === '') {
+        validationString = `${field.label} is required`;
+      } else if (currVal.length < field.min || currVal.length > field.max) {
+        validationString = `${field.label} can be ${field.min} to ${field.max} characters long`;
+      } else if (field.type === 'email') {
+        const validEmail = emailPattern.test(currVal);
+        if (!validEmail) {
+          validationString = `Please provide a valid ${field.label}`;
+        }
+      }
+    }
+    if (currVal && field.max && currVal.length > field.max) {
+      validationString = `${field.label} can be ${field.max} characters long`;
+    }
+    return validationString;
+  };
+
+  const handleInputValidationOnBlur = (field) => {
+    const validationString = validateInput(field);
+    if (validationString) {
+      dispatch({
+        type: 'prompt',
+        fieldName: `${field.id}-prompt`,
+        value: validationString,
+      });
+      return false;
+    }
+    return true;
+  };
+
   return (
     <VisiblityWrapper>
       <div className={classes.root}>
@@ -184,7 +310,7 @@ const Contact = () => {
                 variant="h5"
                 className={classes.socialConnectionHeader}
               >
-                Drop me an email
+                Drop me a message
               </Typography>
               <div
                 className={classnames(classes.paper, {
@@ -243,16 +369,35 @@ const Contact = () => {
                           rows={field.rows || 1}
                           required={!!field.required}
                           style={{ minWidth: '250px' }}
+                          onChange={(e) => handleChange(e, field.id)}
+                          value={state[field.id] || ''}
+                          error={!!state[`${field.id}-prompt`]}
+                          helperText={state[`${field.id}-prompt`]}
+                          onBlur={() => handleInputValidationOnBlur(field)}
                         />
                       );
                     })}
                   </form>
+                  {!!state.promptMessage && (
+                    <p className={classes.promptMessageClass}>
+                      {state.promptMessage}
+                    </p>
+                  )}
                   <Button
                     variant="contained"
                     color="primary"
                     className={classes.formSubmitBtn}
+                    onClick={() => handleFormSubmit(contactFormFields)}
+                    disabled={!!state.loading}
                   >
-                    Submit
+                    {state.loading ? (
+                      <>
+                        <CircularProgress color="primary" size={20} />
+                        <p className={classes.loadingClass}>Submitting</p>
+                      </>
+                    ) : (
+                      'Submit'
+                    )}
                   </Button>
                 </div>
               </div>
@@ -262,6 +407,32 @@ const Contact = () => {
       </div>
     </VisiblityWrapper>
   );
+};
+
+const contactReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'fieldUpdate': {
+      return {
+        ...state,
+        [action.fieldName]: action.value,
+        [`${action.fieldName}-prompt`]: '',
+        promptMessage: '',
+      };
+    }
+    case 'prompt': {
+      return {
+        ...state,
+        [action.fieldName]: action.value,
+      };
+    }
+    case 'reset': {
+      return {
+        ...initState,
+      };
+    }
+    default:
+      return state;
+  }
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -374,6 +545,15 @@ const useStyles = makeStyles((theme) => ({
   linkTextStyle: {
     color: blue.A400,
     textDecoration: 'none',
+  },
+  promptMessageClass: {
+    padding: '10px',
+    color: theme.palette.primary.main,
+    maxWidth: '300px',
+    textAlign: 'center',
+  },
+  loadingClass: {
+    marginLeft: '10px',
   },
 }));
 
