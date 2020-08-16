@@ -272,17 +272,15 @@ const MainPage = () => {
 
 const App = () => {
   return (
-    <Router>
-      <div>
-        <Switch>
-          <Route exact path="/adminPanel">
-            <AdminPanel />
-          </Route>
-          <Route path="/">
-            <MainPage />
-          </Route>
-        </Switch>
-      </div>
+    <Router basename={process.env.PUBLIC_URL}>
+      <Switch>
+        <Route exact path="/adminPanel">
+          <AdminPanel />
+        </Route>
+        <Route path="/">
+          <MainPage />
+        </Route>
+      </Switch>
     </Router>
   );
 };
