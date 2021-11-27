@@ -40,15 +40,26 @@ const experienceList = [
   },
   {
     id: '2019',
-    duration: '2019-Present',
+    duration: '2019-2020',
     institute: 'Ernst and Young GDS',
     degree: 'Senior Associate',
     stream: '',
-    description: `BAU task involves design discussion and implementation of efficient and scalable solutions to business problems.
-        Working with frontend technologies like Javascript (ReactJS), CSS along with backend technologies like Nodejs, MongoDB to develop products for varied business requirements.
-        Working in an agile manner so as to effectively meet development and deployment timelines.`,
+    description: `Task involved design discussion and implementation of efficient and scalable solutions to business problems.
+        Worked with frontend technologies like Javascript (ReactJS), CSS along with backend technologies like Nodejs, MongoDB to develop products for varied business requirements.
+        Worked in an agile manner so as to effectively meet development and deployment timelines.`,
     icon: 'web',
     iconColor: 'primary',
+  },
+  {
+    id: '2020',
+    duration: '2020-Present',
+    institute: 'Walmart Global Tech',
+    degree: 'Software Engineer III',
+    stream: '',
+    description:
+      "At Walmart responsibilities include designing and developing product which helps to provide insights into sourcing and procurement data to drive business results. Along with BAU tasks also involved with doing POC's, participating actively in various ih-house hackathons, mentoring young talent and contributing to hire the best talent for Walmart.",
+    icon: 'web',
+    iconColor: 'secondary',
   },
 ];
 

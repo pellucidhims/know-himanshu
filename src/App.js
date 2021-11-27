@@ -244,19 +244,9 @@ const MainPage = () => {
                 {[...new Array(5)].map((idx) => {
                   return (
                     <Box key={idx} style={{ marginBottom: '10px' }}>
-                      You can also type a keyword to search online for the video
-                      that best fits your document. To make your document look
-                      professionally produced, Word provides header, footer,
-                      cover page, and text box designs that complement each
-                      other. For example, you can add a matching cover page,
-                      header, and sidebar. Click Insert and then choose the
-                      elements you want from the different galleries. Themes and
-                      styles also help keep your document coordinated. When you
-                      click Design and choose a new Theme, the pictures, charts,
-                      and SmartArt graphics change to match your new theme. When
-                      you apply styles, your headings change to match the new
-                      theme. Save time in Word with new buttons that show up
-                      where you need them.
+                      This is some unexplored section and if you are seeing
+                      this, please connect with the developer. Things needs to
+                      be corrected!
                     </Box>
                   );
                 })}

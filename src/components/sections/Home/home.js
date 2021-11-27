@@ -145,9 +145,9 @@ const Home = () => {
                   style={{ position: 'absolute', bottom: '5%', right: '25%' }}
                 >
                   <a
-                    href={`${process.env.PUBLIC_URL}/HimanshuResume-Jul2020.pdf`}
+                    href={`${process.env.PUBLIC_URL}/HimanshuResume.pdf`}
                     style={{ textDecoration: 'none' }}
-                    download={`Himanshu (4-5Years,EY) - ${new Date().toLocaleDateString()}.pdf`}
+                    download={`Himanshu (6Years,Walmart) - ${new Date().toLocaleDateString()}.pdf`}
                   >
                     <Button
                       variant="contained"
