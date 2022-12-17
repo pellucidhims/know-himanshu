@@ -7,7 +7,7 @@ import {
   useMediaQuery,
 } from '@material-ui/core';
 import classnames from 'classnames';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import NavBar from './components/NavBar/navBar';
 
