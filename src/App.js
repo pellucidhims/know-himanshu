@@ -5,7 +5,9 @@ import {
   Link,
   Typography,
   useMediaQuery,
+  IconButton,
 } from '@material-ui/core';
+import OpenInNewOutlinedIcon from '@material-ui/icons/OpenInNewOutlined';
 import classnames from 'classnames';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -20,6 +22,7 @@ import Experience from './components/sections/Experience/experience';
 import Project from './components/sections/Project/project';
 import Blog from './components/sections/Blog/blog';
 import AdminPanel from './components/AdminPanel';
+import AppReferral from './components/AppReferral';
 
 import { LINKS } from './constants';
 
@@ -203,6 +206,48 @@ const MainPage = () => {
               </Box>
             );
           }
+          case 'referral': {
+            return (
+              <Box
+                my={0}
+                id={section.id}
+                key={section.id}
+                className={classnames(
+                  classes.boxWrapper,
+                  classes.boxWrapperBgSecondary,
+                  { [classes.verticalBoxWrapper]: !matches }
+                )}
+              >
+                <Typography
+                  variant="h4"
+                  className={classes.sectionTitleWrapper}
+                >
+                  {section.label}
+                  <Typography
+                    variant="h5"
+                    className={`${classes.sectionSubTitleWrapper}`}
+                  >
+                    <Link
+                      color="inherit"
+                      href="https://www.knowhimanshu.in/#/appReferral"
+                      target="_blank"
+                      className={classes.linkText}
+                    >
+                      View All App Referrals
+                      <IconButton
+                        aria-label="view all referrals"
+                        className={classes.linkText}
+                      >
+                        <OpenInNewOutlinedIcon />
+                      </IconButton>
+                    </Link>
+                  </Typography>
+                </Typography>
+                <div />
+                <AppReferral singleLineList />
+              </Box>
+            );
+          }
           case 'contact': {
             return (
               <Box
@@ -241,7 +286,7 @@ const MainPage = () => {
                 >
                   {section.label}
                 </Typography>
-                {[...new Array(5)].map((idx) => {
+                {[...new Array(1)].map((idx) => {
                   return (
                     <Box key={idx} style={{ marginBottom: '10px' }}>
                       This is some unexplored section and if you are seeing
@@ -266,6 +311,9 @@ const App = () => {
       <Switch>
         <Route exact path="/adminPanel">
           <AdminPanel />
+        </Route>
+        <Route exact path="/appReferral">
+          <AppReferral />
         </Route>
         <Route path="/">
           <MainPage />
@@ -301,6 +349,16 @@ const useStyles = makeStyles((theme) => ({
   sectionTitleWrapper: {
     marginBottom: '2%',
     textTransform: 'uppercase',
+  },
+  sectionSubTitleWrapper: {
+    textTransform: 'none',
+  },
+  linkText: {
+    color: theme.palette.secondary.contrastText,
+    textDecoration: 'none',
+    '&:focus, &:hover, &:visited, &:link, &:active': {
+      textDecoration: 'none',
+    },
   },
 }));
 

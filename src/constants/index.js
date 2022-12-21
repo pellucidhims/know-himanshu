@@ -30,6 +30,11 @@ export const LINKS = [
     to: 'project',
   },
   {
+    id: 'referral',
+    label: 'Referral Codes',
+    to: 'referral',
+  },
+  {
     id: 'blog',
     label: 'Blog',
     to: 'blog',

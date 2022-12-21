@@ -106,6 +106,7 @@ const AdminPanel = () => {
           variant="outlined"
           className={classes.textFieldRoot}
           onChange={(e) => handleChange(e, 'password')}
+          type="password"
           value={state.password || ''}
         />
         {!!state.prompt && <p className={classes.promptRoot}>{state.prompt}</p>}
