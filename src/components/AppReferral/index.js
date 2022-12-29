@@ -18,10 +18,7 @@ const SUCCESS = 'SUCCESS';
 const FAIL = 'FAIL';
 
 const useStyles = makeStyles((theme) => ({
-  referralRoot: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
+  referralRoot: {},
   root: {
     display: 'flex',
     justifyContent: 'center',
@@ -36,16 +33,23 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.contrastText,
   },
   referralListRoot: {
+    width: '100%',
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     overflow: 'hidden',
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.secondary.contrastText,
   },
   imageList: {
-    width: '80%',
-    // height: 450,
+    '&::-webkit-scrollbar': {
+      height: '5px',
+      borderRadius: '50px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: theme.palette.primary.main,
+      borderRadius: '50px',
+    },
   },
   singleLineList: {
     flexWrap: 'nowrap',

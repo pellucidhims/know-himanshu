@@ -39,7 +39,7 @@ function Copyright() {
         ❤️
       </span>{' '}
       and passion <br /> {' Copyright © '}
-      <Link color="inherit" href="http://www.knowhimanshu.in/">
+      <Link color="inherit" href={window.location.href}>
         Himanshu
       </Link>{' '}
       {new Date().getFullYear()}
@@ -229,7 +229,7 @@ const MainPage = () => {
                   >
                     <Link
                       color="inherit"
-                      href="https://www.knowhimanshu.in/#/appReferral"
+                      href={`${window.location.href}appReferral`}
                       target="_blank"
                       className={classes.linkText}
                     >
@@ -243,7 +243,6 @@ const MainPage = () => {
                     </Link>
                   </Typography>
                 </Typography>
-                <div />
                 <AppReferral singleLineList />
               </Box>
             );
