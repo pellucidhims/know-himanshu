@@ -65,6 +65,7 @@ const CustomGridList = (props) => {
                 src={tile.img}
                 alt={tile.title}
                 className={classes.listTileImage}
+                loading="lazy"
               />
             </div>
             <GridListTileBar

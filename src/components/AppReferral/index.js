@@ -11,14 +11,16 @@ import Alert from '@material-ui/lab/Alert';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import { api } from '../../utils';
+import { apiLoadStatus } from '../../constants';
 
-const IDLE = 'IDLE';
-const LOADING = 'LOADING';
-const SUCCESS = 'SUCCESS';
-const FAIL = 'FAIL';
+const { IDLE, LOADING, SUCCESS, FAIL } = apiLoadStatus;
 
 const useStyles = makeStyles((theme) => ({
-  referralRoot: {},
+  referralRoot: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   root: {
     display: 'flex',
     justifyContent: 'center',
@@ -66,13 +68,10 @@ const useStyles = makeStyles((theme) => ({
   listItemRoot: {
     margin: '10px',
   },
-  // visitorCardContentRoot: {
-
-  //   borderBottom: '1px solid gray',
-  //   '&:last-child': {
-  //     border: 'none',
-  //   },
-  // },
+  errorSection: {
+    fontSize: '2em',
+    color: theme.palette.error.main,
+  },
 }));
 
 const RenderReferral = ({
@@ -96,7 +95,7 @@ const RenderReferral = ({
           cols={referral.cols || 1}
           className={classes.imageListItem}
         >
-          <img src={referral.logo} alt={referral.id} />
+          <img src={referral.logo} alt={referral.id} loading="lazy" />
           <ImageListItemBar
             title={referral.code}
             actionIcon={
@@ -183,11 +182,15 @@ const AppReferral = ({ singleLineList, cols }) => {
   };
 
   if ([LOADING, FAIL].includes(indicator.status)) {
-    return <div className={classes.referralRoot}>{indicator.message}</div>;
+    return (
+      <div className={classes.referralRoot}>
+        <span className={classes.errorSection}>{indicator.message}</span>
+      </div>
+    );
   }
 
   return (
-    <div className={classes.referralRoot}>
+    <div>
       <div className={classes.root}>
         <Typography variant="h5" component="h2">
           Referral Codes

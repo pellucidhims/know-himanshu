@@ -129,6 +129,7 @@ const Skills = () => {
                   src={`${process.env.PUBLIC_URL}/${sketch.file}.jpg`}
                   className={classes.sketch}
                   alt={sketch.label}
+                  loading="lazy"
                 />
               </div>
             );
