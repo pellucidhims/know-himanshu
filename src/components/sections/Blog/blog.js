@@ -90,7 +90,7 @@ const StoryCarousel = ({ stories = [] }) => {
   return (
     <div className={classes.storyCarouselRoot}>
       {stories.map((story) => {
-        return <StoryCard story={story} key={story.guid} />;
+        return <StoryCard key={story.guid} {...story} />;
       })}
     </div>
   );
