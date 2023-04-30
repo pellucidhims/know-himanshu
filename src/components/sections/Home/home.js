@@ -147,7 +147,7 @@ const Home = () => {
                   <a
                     href={`${process.env.PUBLIC_URL}/HimanshuResume.pdf`}
                     style={{ textDecoration: 'none' }}
-                    download={`Himanshu (6Years,Walmart) - ${new Date().toLocaleDateString()}.pdf`}
+                    download={`Himanshu (7 Years, Walmart) - ${new Date().toLocaleDateString()}.pdf`}
                   >
                     <Button
                       variant="contained"
