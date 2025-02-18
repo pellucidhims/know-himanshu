@@ -229,7 +229,7 @@ const MainPage = () => {
                   >
                     <Link
                       color="inherit"
-                      href={`${window.location.href}appReferral`}
+                      href="https://www.appreferral.in/"
                       target="_blank"
                       className={classes.linkText}
                     >
